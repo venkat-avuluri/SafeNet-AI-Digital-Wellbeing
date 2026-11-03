@@ -71,14 +71,13 @@ const usageRecordSchema = new mongoose.Schema(
 );
 
 // Pre-save to auto-fill session duration if omitted and tag night usage
-usageRecordSchema.pre('save', function (next) {
+usageRecordSchema.pre('save', function () {
   if (!this.sessionDurationMinutes) {
     this.sessionDurationMinutes = this.durationMinutes;
   }
   if (this.timePeriod === 'Night') {
     this.isNightUsage = true;
   }
-  next();
 });
 
 usageRecordSchema.index({ user: 1, date: -1 });
