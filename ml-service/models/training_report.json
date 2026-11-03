@@ -1,0 +1,227 @@
+{
+  "project": "SafeNet Digital Wellbeing Risk Assessment",
+  "dataset_type": "Synthetic Behavioral Screen-Time Benchmark",
+  "synthetic_notice": "Generated for algorithmic prototyping and feature analysis. Not clinical or medical data.",
+  "training_timestamp": "2026-11-03T12:07:51.875327+00:00",
+  "total_samples": 2400,
+  "train_samples": 1920,
+  "test_samples": 480,
+  "features_used": [
+    "daily_screen_time_hours",
+    "avg_session_mins",
+    "sessions_per_day",
+    "night_time_mins",
+    "social_media_hours",
+    "gaming_hours",
+    "productive_hours",
+    "entertainment_hours",
+    "weekend_weekday_ratio",
+    "break_frequency_per_day",
+    "social_ratio",
+    "night_ratio",
+    "productivity_ratio"
+  ],
+  "target_classes": [
+    "Low Risk",
+    "Moderate Risk",
+    "High Risk"
+  ],
+  "best_model": "LogisticRegression",
+  "feature_importance": {
+    "daily_screen_time_hours": 0.9778,
+    "avg_session_mins": 0.9978,
+    "sessions_per_day": 1.0642,
+    "night_time_mins": 0.8525,
+    "social_media_hours": 1.101,
+    "gaming_hours": 0.8082,
+    "productive_hours": 0.4347,
+    "entertainment_hours": 0.1773,
+    "weekend_weekday_ratio": 0.3261,
+    "break_frequency_per_day": 0.7103,
+    "social_ratio": 1.1103,
+    "night_ratio": 0.479,
+    "productivity_ratio": 1.1643
+  },
+  "candidate_evaluations": {
+    "LogisticRegression": {
+      "cv_macro_f1_mean": 1.0,
+      "cv_macro_f1_std": 0.0,
+      "test_accuracy": 1.0,
+      "test_precision_macro": 1.0,
+      "test_recall_macro": 1.0,
+      "test_f1_macro": 1.0,
+      "confusion_matrix": [
+        [
+          160,
+          0,
+          0
+        ],
+        [
+          0,
+          160,
+          0
+        ],
+        [
+          0,
+          0,
+          160
+        ]
+      ],
+      "classification_report": {
+        "Low Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "Moderate Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "High Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 480.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 480.0
+        }
+      }
+    },
+    "DecisionTree": {
+      "cv_macro_f1_mean": 0.9943,
+      "cv_macro_f1_std": 0.0038,
+      "test_accuracy": 0.9958,
+      "test_precision_macro": 0.9958,
+      "test_recall_macro": 0.9958,
+      "test_f1_macro": 0.9958,
+      "confusion_matrix": [
+        [
+          160,
+          0,
+          0
+        ],
+        [
+          0,
+          159,
+          1
+        ],
+        [
+          0,
+          1,
+          159
+        ]
+      ],
+      "classification_report": {
+        "Low Risk": {
+          "precision": 0.99375,
+          "recall": 0.99375,
+          "f1-score": 0.99375,
+          "support": 160.0
+        },
+        "Moderate Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "High Risk": {
+          "precision": 0.99375,
+          "recall": 0.99375,
+          "f1-score": 0.99375,
+          "support": 160.0
+        },
+        "accuracy": 0.9958333333333333,
+        "macro avg": {
+          "precision": 0.9958333333333332,
+          "recall": 0.9958333333333332,
+          "f1-score": 0.9958333333333332,
+          "support": 480.0
+        },
+        "weighted avg": {
+          "precision": 0.9958333333333333,
+          "recall": 0.9958333333333333,
+          "f1-score": 0.9958333333333333,
+          "support": 480.0
+        }
+      }
+    },
+    "RandomForest": {
+      "cv_macro_f1_mean": 1.0,
+      "cv_macro_f1_std": 0.0,
+      "test_accuracy": 1.0,
+      "test_precision_macro": 1.0,
+      "test_recall_macro": 1.0,
+      "test_f1_macro": 1.0,
+      "confusion_matrix": [
+        [
+          160,
+          0,
+          0
+        ],
+        [
+          0,
+          160,
+          0
+        ],
+        [
+          0,
+          0,
+          160
+        ]
+      ],
+      "classification_report": {
+        "Low Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "Moderate Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "High Risk": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 160.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 480.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 480.0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Trained on synthetic behavioral patterns reflecting screen time distributions.",
+    "Must NOT be interpreted as psychiatric, medical, or clinical addiction diagnosis.",
+    "Real-world behavioral patterns exhibit individual variances (e.g. software engineers have high productive screen time).",
+    "Designed for educational digital wellbeing awareness and habit guidance."
+  ]
+}

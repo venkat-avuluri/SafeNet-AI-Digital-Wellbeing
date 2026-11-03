@@ -1,0 +1,71 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, 'Please provide your name'],
+      trim: true,
+      maxlength: [60, 'Name cannot exceed 60 characters']
+    },
+    email: {
+      type: String,
+      required: [true, 'Please provide your email address'],
+      unique: true,
+      lowercase: true,
+      trim: true,
+      match: [
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/,
+        'Please enter a valid email address'
+      ]
+    },
+    password: {
+      type: String,
+      required: [true, 'Please provide a password'],
+      minlength: [6, 'Password must be at least 6 characters'],
+      select: false
+    },
+    dailyScreenTimeGoalMinutes: {
+      type: Number,
+      default: 240, // 4 hours default goal
+      min: [30, 'Goal must be at least 30 minutes'],
+      max: [1440, 'Goal cannot exceed 24 hours']
+    },
+    nightTimeCutoff: {
+      type: String,
+      default: '22:00'
+    },
+    ageGroup: {
+      type: String,
+      enum: ['Under 18', '18-24', '25-34', '35-50', '50+'],
+      default: '18-24'
+    },
+    notificationsEnabled: {
+      type: Boolean,
+      default: true
+    }
+  },
+  {
+    timestamps: true
+  }
+);
+
+// Hash password before saving
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Compare password helper
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+module.exports = mongoose.model('User', userSchema);
